@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Takwa Belguith — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Cairo:wght@400;600;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#12081f; --violet:#8b5cf6; --pink:#ff5fa2; --lilac:#c4b5fd; --blush:#ffd1e8; --text:#f6f1ff; --muted:#b9acd6;
+  --glass:rgba(255,255,255,.07); --edge:rgba(255,255,255,.18);
+  --display:"Bricolage Grotesque","Cairo",sans-serif; --body:"DM Sans","Cairo",sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--text);font:400 1.05rem/1.65 var(--body);overflow-x:hidden}
+[dir=rtl] body{font-family:"Cairo",sans-serif}
+[dir=rtl] h1,[dir=rtl] h2,[dir=rtl] h3{font-family:"Cairo",sans-serif}
+
+/* aurora */
+.aurora{position:fixed;inset:0;z-index:-1;overflow:hidden;background:radial-gradient(120% 80% at 50% 0%,#1d0e3a,#12081f 60%)}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55;animation:drift 22s ease-in-out infinite alternate}
+.b1{width:55vmax;height:55vmax;background:var(--violet);top:-20vmax;left:-15vmax}
+.b2{width:45vmax;height:45vmax;background:var(--pink);bottom:-18vmax;right:-12vmax;animation-duration:28s}
+.b3{width:35vmax;height:35vmax;background:#5b8cff;top:35%;left:40%;opacity:.3;animation-duration:34s}
+@keyframes drift{to{transform:translate(12vmax,8vmax) rotate(40deg) scale(1.15)}}
+#net{position:fixed;inset:0;z-index:-1;pointer-events:none}
+
+/* layout */
+nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:20;display:flex;gap:6px;align-items:center;padding:8px 10px;border-radius:999px;background:rgba(18,8,31,.55);backdrop-filter:blur(16px);border:1px solid var(--edge);max-width:94vw}
+nav a{color:var(--text);text-decoration:none;font-size:.9rem;padding:6px 12px;border-radius:999px;transition:background .25s}
+nav a:hover{background:var(--glass)}
+.lang{display:flex;gap:2px;margin-inline-start:6px;padding-inline-start:8px;border-inline-start:1px solid var(--edge)}
+.lang button{background:none;border:0;color:var(--muted);font:600 .8rem var(--body);padding:6px 9px;border-radius:999px;cursor:pointer}
+.lang button.on{background:linear-gradient(135deg,var(--violet),var(--pink));color:#fff}
+section{max-width:1080px;margin:0 auto;padding:110px 24px 30px}
+h2{font:800 clamp(1.8rem,4vw,2.6rem)/1.1 var(--display);margin-bottom:28px;letter-spacing:-.02em}
+.glass{background:var(--glass);border:1px solid var(--edge);border-radius:26px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 20px 60px rgba(10,0,30,.45),inset 0 1px 0 rgba(255,255,255,.15)}
+
+/* hero */
+#home{min-height:100vh;display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:center;padding-top:120px}
+.hello{color:var(--blush);font-weight:500;margin-bottom:10px}
+h1{font:800 clamp(2.8rem,8vw,5.6rem)/.98 var(--display);letter-spacing:-.04em}
+h1 .ch{display:inline-block;opacity:0;transform:translateY(60%) rotate(6deg);filter:blur(8px);animation:pop .8s cubic-bezier(.2,.9,.3,1.2) forwards}
+h1 .line2{background:linear-gradient(100deg,var(--lilac),var(--pink) 60%,var(--blush));-webkit-background-clip:text;background-clip:text;color:transparent;display:block}
+@keyframes pop{to{opacity:1;transform:none;filter:none}}
+.role{margin-top:22px;font-size:1.25rem;color:var(--lilac);min-height:2em}
+.role::after{content:"";display:inline-block;width:2px;height:1.1em;background:var(--pink);margin-inline-start:4px;vertical-align:-3px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.sub{max-width:52ch;margin-top:14px;color:var(--muted)}
+.cta{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.btn{padding:13px 26px;border-radius:999px;text-decoration:none;font-weight:500;color:#fff;border:1px solid var(--edge);background:var(--glass);transition:transform .25s,box-shadow .25s}
+.btn.main{background:linear-gradient(135deg,var(--violet),var(--pink));border:0;box-shadow:0 10px 30px rgba(255,95,162,.35)}
+.btn:hover{transform:translateY(-3px) scale(1.03)}
+.avatar{position:relative;width:min(300px,70vw);aspect-ratio:1;margin:auto;border-radius:50%;padding:6px;background:conic-gradient(from 0deg,var(--violet),var(--pink),var(--blush),#5b8cff,var(--violet));animation:spin 9s linear infinite;box-shadow:0 0 80px rgba(255,95,162,.35)}
+.avatar>div{width:100%;height:100%;border-radius:50%;background:#1b0d33;display:grid;place-items:center;font:800 4.5rem var(--display);animation:spin 9s linear infinite reverse;overflow:hidden;position:relative}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* video */
+.frame{padding:14px;position:relative}
+.frame::before{content:"";position:absolute;inset:-2px;border-radius:28px;background:linear-gradient(135deg,var(--violet),var(--pink),transparent 60%);z-index:-1;opacity:.7;filter:blur(14px)}
+video{width:100%;border-radius:16px;display:block;background:#0b0415;aspect-ratio:16/9}
+.novideo video{display:none}
+.ph{display:none;aspect-ratio:16/9;place-items:center;text-align:center;color:var(--muted);padding:20px;border-radius:16px;background:#0b0415}
+.novideo .ph{display:grid}
+.ph code{color:var(--blush)}
+
+/* content */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.card{padding:26px;transition:transform .35s,border-color .35s}
+.card:hover{transform:translateY(-6px);border-color:rgba(255,95,162,.6)}
+.card h3{font:700 1.25rem var(--display);margin-bottom:8px}
+.card p{color:var(--muted);font-size:.98rem}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.tag{font-size:.82rem;padding:5px 12px;border-radius:999px;background:rgba(139,92,246,.22);border:1px solid rgba(196,181,253,.3);color:var(--blush)}
+.about{padding:34px;font-size:1.12rem}
+.about p+p{margin-top:14px}
+.skills{display:flex;flex-wrap:wrap;gap:12px}
+.skills .tag{font-size:1rem;padding:9px 18px}
+.contact{text-align:center;padding:44px 24px}
+.contact .cta{justify-content:center}
+footer{text-align:center;color:var(--muted);padding:50px 20px 40px;font-size:.9rem}
+
+/* scroll reveal */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .9s,transform .9s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:780px){#home{grid-template-columns:1fr;text-align:center;padding-top:110px}.sub{margin-inline:auto}.cta{justify-content:center}.avatar{order:-1;width:200px}nav a{padding:6px 8px;font-size:.8rem}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}h1 .ch,.rv{opacity:1;transform:none;filter:none}}
+:focus-visible{outline:2px solid var(--blush);outline-offset:3px}
+</style>
+</head>
+<body>
+<div class="aurora"><i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i></div>
+<canvas id="net"></canvas>
+
+<nav>
+  <a href="#home" data-i18n="n_home"></a><a href="#video" data-i18n="n_video"></a><a href="#about" data-i18n="n_about"></a><a href="#projects" data-i18n="n_projects"></a><a href="#contact" data-i18n="n_contact"></a>
+  <div class="lang"><button data-l="en" class="on">EN</button><button data-l="fr">FR</button><button data-l="ar">عربي</button></div>
+</nav>
+
+<section id="home">
+  <div>
+    <p class="hello" data-i18n="hello"></p>
+    <h1 id="name"></h1>
+    <p class="role" id="role"></p>
+    <p class="sub" data-i18n="sub"></p>
+    <div class="cta"><a class="btn main" href="#video" data-i18n="watch"></a><a class="btn" href="#contact" data-i18n="n_contact"></a></div>
+  </div>
+  <!-- To use a real photo: put photo.jpg next to index.html -->
+  <div class="avatar"><div>TB<img src="photo.jpg" alt="Takwa Belguith" onerror="this.remove()"></div></div>
+</section>
+
+<section id="video">
+  <h2 class="rv" data-i18n="h_video"></h2>
+  <div class="glass frame rv" id="vf">
+    <!-- Put your video in the same folder and name it video.mp4 -->
+    <video controls preload="metadata" poster="poster.jpg"><source src="video.mp4" type="video/mp4"></video>
+    <div class="ph"><p data-i18n="novideo"></p></div>
+  </div>
+</section>
+
+<section id="about">
+  <h2 class="rv" data-i18n="h_about"></h2>
+  <div class="glass about rv"><p data-i18n="about1"></p><p data-i18n="about2"></p><p data-i18n="about3"></p></div>
+</section>
+
+<section id="skills">
+  <h2 class="rv" data-i18n="h_skills"></h2>
+  <div class="skills rv">
+    <span class="tag">Networking</span><span class="tag">Cisco</span><span class="tag">Linux</span><span class="tag">Windows Server</span><span class="tag">VMware / VirtualBox</span><span class="tag">Wireshark</span><span class="tag">Cybersecurity</span><span class="tag">TCP/IP</span>
+  </div>
+</section>
+
+<section id="projects">
+  <h2 class="rv" data-i18n="h_projects"></h2>
+  <div class="grid">
+    <div class="glass card rv"><h3 data-i18n="p1t"></h3><p data-i18n="p1d"></p><div class="tags"><span class="tag">Cisco Packet Tracer</span><span class="tag">VLAN</span></div></div>
+    <div class="glass card rv"><h3 data-i18n="p2t"></h3><p data-i18n="p2d"></p><div class="tags"><span class="tag">VMware</span><span class="tag">Linux</span></div></div>
+    <div class="glass card rv"><h3 data-i18n="p3t"></h3><p data-i18n="p3d"></p><div class="tags"><span class="tag">Wireshark</span><span class="tag">Firewall</span></div></div>
+  </div>
+</section>
+
+<section id="involvement">
+  <h2 class="rv" data-i18n="h_assoc"></h2>
+  <div class="glass about rv"><p data-i18n="assoc"></p></div>
+</section>
+
+<section id="contact">
+  <div class="glass contact rv">
+    <h2 data-i18n="h_contact"></h2>
+    <p class="sub" style="margin:0 auto 24px" data-i18n="contact"></p>
+    <div class="cta">
+      <a class="btn main" href="mailto:your.email@example.com">Email</a>
+      <a class="btn" href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/your-username" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+<footer>© 2026 Takwa Belguith — ISET Sfax</footer>
+
+<script>
+const T={
+en:{n_home:"Home",n_video:"Video",n_about:"About",n_projects:"Projects",n_contact:"Contact",hello:"Hi, I’m",
+ roles:["Networks & Systems student","Cybersecurity enthusiast","Always learning"],
+ sub:"Third-year Bachelor’s student in IT, Networks and Computer Systems (RSI) at ISET Sfax. Curious, ambitious and motivated.",
+ watch:"Watch my video",h_video:"Meet me in one minute",novideo:"Add your video as video.mp4 next to index.html and it will play here.",
+ h_about:"About me",
+ about1:"I’m passionate about new technologies and about experiences that help me grow in personality, skills and responsibility.",
+ about2:"During my studies I’ve built knowledge in networking, computer systems, virtualization and cybersecurity.",
+ about3:"Through hands-on projects, I’ve learned to use technical tools, analyze problems and look for the right solutions. These experiences strengthened my interest in IT and my wish to keep learning.",
+ h_skills:"Skills & tools",h_projects:"Projects",
+ p1t:"Network design lab",p1d:"Replace with a short description of your project: what you built and what you learned.",
+ p2t:"Virtualization lab",p2d:"Replace with a short description of your project: what you built and what you learned.",
+ p3t:"Security & monitoring",p3d:"Replace with a short description of your project: what you built and what you learned.",
+ h_assoc:"Beyond my studies",assoc:"Community involvement matters to me. Add the names of your associations, your roles and what you did there.",
+ h_contact:"Let’s connect",contact:"Open to internships, projects and new opportunities."},
+fr:{n_home:"Accueil",n_video:"Vidéo",n_about:"À propos",n_projects:"Projets",n_contact:"Contact",hello:"Bonjour, je suis",
+ roles:["Étudiante en réseaux et systèmes","Passionnée de cybersécurité","Toujours en apprentissage"],
+ sub:"Étudiante en 3ᵉ année de Licence en Technologies de l’Informatique, spécialité Réseaux et Systèmes Informatiques (RSI), à l’ISET de Sfax. Curieuse, ambitieuse et motivée.",
+ watch:"Voir ma vidéo",h_video:"Faisons connaissance",novideo:"Ajoutez votre vidéo sous le nom video.mp4 à côté de index.html pour la lire ici.",
+ h_about:"À propos de moi",
+ about1:"Je suis passionnée par les nouvelles technologies, mais aussi par les expériences qui me permettent de développer ma personnalité, mes compétences et mon sens des responsabilités.",
+ about2:"Au cours de mon parcours universitaire, j’ai acquis des connaissances en réseaux, systèmes informatiques, virtualisation et cybersécurité.",
+ about3:"À travers différents projets pratiques, j’ai appris à utiliser plusieurs outils techniques, à analyser des problèmes et à rechercher des solutions adaptées. Ces expériences ont renforcé mon intérêt pour l’informatique et mon envie d’apprendre.",
+ h_skills:"Compétences et outils",h_projects:"Projets",
+ p1t:"Atelier de conception réseau",p1d:"À remplacer par une courte description de votre projet : ce que vous avez réalisé et appris.",
+ p2t:"Atelier de virtualisation",p2d:"À remplacer par une courte description de votre projet : ce que vous avez réalisé et appris.",
+ p3t:"Sécurité et supervision",p3d:"À remplacer par une courte description de votre projet : ce que vous avez réalisé et appris.",
+ h_assoc:"Au-delà de mes études",assoc:"L’engagement associatif occupe une place importante dans mon parcours. Ajoutez le nom de vos associations, vos rôles et vos actions.",
+ h_contact:"Restons en contact",contact:"Ouverte aux stages, aux projets et aux nouvelles opportunités."},
+ar:{n_home:"الرئيسية",n_video:"الفيديو",n_about:"نبذة",n_projects:"المشاريع",n_contact:"تواصل",hello:"مرحبًا، أنا",
+ roles:["طالبة شبكات وأنظمة","شغوفة بالأمن السيبراني","في تعلّم دائم"],
+ sub:"طالبة في السنة الثالثة إجازة في تكنولوجيات الإعلامية، اختصاص شبكات وأنظمة إعلامية (RSI) بالمعهد العالي للدراسات التكنولوجية بصفاقس. فضولية وطموحة ومتحمسة.",
+ watch:"شاهد الفيديو",h_video:"تعرّف عليّ",novideo:"أضف الفيديو باسم video.mp4 بجانب ملف index.html ليتم تشغيله هنا.",
+ h_about:"نبذة عني",
+ about1:"أنا شغوفة بالتكنولوجيات الحديثة وبالتجارب التي تساعدني على تطوير شخصيتي ومهاراتي وحسّ المسؤولية لدي.",
+ about2:"خلال مساري الجامعي اكتسبت معارف في الشبكات والأنظمة الإعلامية والمحاكاة الافتراضية والأمن السيبراني.",
+ about3:"من خلال مشاريع تطبيقية متنوعة، تعلمت استخدام عدة أدوات تقنية وتحليل المشكلات والبحث عن حلول مناسبة. وقد عزّزت هذه التجارب اهتمامي بالمجال ورغبتي في مواصلة التعلم.",
+ h_skills:"المهارات والأدوات",h_projects:"المشاريع",
+ p1t:"مخبر تصميم الشبكات",p1d:"استبدل هذا النص بوصف قصير لمشروعك: ماذا أنجزت وماذا تعلمت.",
+ p2t:"مخبر المحاكاة الافتراضية",p2d:"استبدل هذا النص بوصف قصير لمشروعك: ماذا أنجزت وماذا تعلمت.",
+ p3t:"الأمن والمراقبة",p3d:"استبدل هذا النص بوصف قصير لمشروعك: ماذا أنجزت وماذا تعلمت.",
+ h_assoc:"إلى جانب دراستي",assoc:"للعمل الجمعياتي مكانة مهمة في مساري. أضف أسماء جمعياتك ودورك وما قمت به.",
+ h_contact:"لنبقَ على تواصل",contact:"منفتحة على التربصات والمشاريع والفرص الجديدة."}
+};
+let lang="en",rt;
+function renderName(){
+  const n=document.getElementById("name");n.innerHTML="";
+  const parts=["Takwa","Belguith"];
+  parts.forEach((p,i)=>{const w=document.createElement("span");if(i)w.className="line2";w.dir="ltr";
+    [...p].forEach((c,k)=>{const s=document.createElement("span");s.className="ch";s.textContent=c;s.style.animationDelay=(i*.35+k*.06)+"s";w.appendChild(s)});n.appendChild(w)});
+}
+function type(){
+  clearTimeout(rt);const el=document.getElementById("role"),r=T[lang].roles;let i=0,j=0,del=false;
+  (function tick(){const w=r[i];j+=del?-1:1;el.textContent=w.slice(0,j);
+    if(!del&&j===w.length){del=true;rt=setTimeout(tick,1500);return}
+    if(del&&j===0){del=false;i=(i+1)%r.length}
+    rt=setTimeout(tick,del?35:70)})();
+}
+function setLang(l){
+  lang=l;document.documentElement.lang=l;document.documentElement.dir=l==="ar"?"rtl":"ltr";
+  document.querySelectorAll("[data-i18n]").forEach(e=>e.textContent=T[l][e.dataset.i18n]);
+  document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("on",b.dataset.l===l));
+  document.title="Takwa Belguith — "+T[l].n_home;type();
+  try{localStorage.setItem("lang",l)}catch(e){}
+}
+document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>setLang(b.dataset.l));
+renderName();
+let saved="en";try{saved=localStorage.getItem("lang")||"en"}catch(e){}
+setLang(T[saved]?saved:"en");
+
+// video fallback
+const src=document.querySelector("video source");
+src.addEventListener("error",()=>document.getElementById("vf").classList.add("novideo"));
+
+// scroll reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll(".rv").forEach(e=>io.observe(e));
+
+// network nodes (RSI nod)
+const cv=document.getElementById("net"),cx=cv.getContext("2d");let W,H,pts=[];
+function size(){W=cv.width=innerWidth;H=cv.height=innerHeight;pts=Array.from({length:Math.min(60,Math.floor(W/22))},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35}))}
+size();addEventListener("resize",size);
+(function draw(){cx.clearRect(0,0,W,H);
+  pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1});
+  for(let i=0;i<pts.length;i++){const a=pts[i];cx.fillStyle="rgba(255,209,232,.7)";cx.beginPath();cx.arc(a.x,a.y,1.6,0,7);cx.fill();
+    for(let j=i+1;j<pts.length;j++){const b=pts[j],d=Math.hypot(a.x-b.x,a.y-b.y);
+      if(d<140){cx.strokeStyle="rgba(196,181,253,"+(1-d/140)*.35+")";cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(b.x,b.y);cx.stroke()}}}
+  requestAnimationFrame(draw)})();
+</script>
+</body>
+</html>
